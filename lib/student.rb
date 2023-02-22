@@ -4,9 +4,9 @@ class Student
   attr_accessor :name, :grade, :id
 
   def initialize(id = nil, name, grade)
-    @id = id
     @name = name
     @grade = grade
+    @id = id
   end
 
   # Remember, you can access your database connection anywhere in this class
@@ -60,14 +60,10 @@ class Student
     self.new(row[0], row[1], row[2])
   end
 
-  # def self.find_by_name(name)
-    
-  # end
    def self.find_by_name(name)
     sql = <<-SQL
       SELECT * FROM students 
       WHERE name = ?
-      LIMIT 1
     SQL
 
     # Student.new_from_db(DB[:conn].execute(sql, name)[0])
@@ -84,4 +80,3 @@ class Student
   end
 end
 
-# shaddy = Student.create("Shadrack", "12th")
